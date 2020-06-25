@@ -7,7 +7,11 @@
 
     <div id="nav" v-if="!mobile">
       <ul>
-        <li v-for="item in navList" :key="item"><a href="#">{{ item }}</a></li>
+        <li v-for="item in navList" :key="item"
+        :class="{activepage: activePageName === item ? true : false}"
+        @click="navigation(item)">
+          {{ item }}
+        </li>
       </ul>
 
       <div id="login-btn">登录/注册</div>
@@ -32,7 +36,8 @@ export default {
   name: 'Navigator',
   data () {
     return {
-      navList: ['HTML', 'CSS', 'JavaScript', 'Vue', 'React'],
+      navList: ['HOME', 'ABOUT', 'JavaScript', 'Vue', 'React'],
+      activePageName: '',
       mobile: false,
       screenWidth: document.body.clientWidth,
       btnIsActive: false
@@ -58,6 +63,10 @@ export default {
   methods: {
     test: function () {
       this.btnIsActive = !this.btnIsActive
+    },
+    navigation: function (item) {
+      this.activePageName = item
+      this.$router.push(`/${item}`)
     }
   }
 }
@@ -114,7 +123,7 @@ export default {
   li {
     padding: 0 10px;
     height: 100%;
-    margin: 0 8px;
+    margin: 0 1px;
     float: left;
     line-height: 58px;
   }
@@ -124,14 +133,9 @@ export default {
     transition: all .3s;
   }
 
-  a {
-    color: white;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #F75000;
-    transition: color .3s;
+  .activepage {
+    background-color: #5c5c5c;
+    color: orangered;
   }
 
   #nav-mobile {
