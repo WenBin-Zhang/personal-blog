@@ -74,6 +74,9 @@ export default {
 
 <style lang="scss" scoped>
   #navigator {
+    position: fixed;
+    top: 0;
+    z-index: 999;
     width: 100vw;
     height: 58px;
     background-color: #363838;
@@ -129,6 +132,7 @@ export default {
   }
 
   li:hover {
+    cursor: pointer;
     background: #5c5c5c;
     transition: all .3s;
   }
