@@ -58,7 +58,6 @@ export default {
   methods: {
     test: function () {
       this.btnIsActive = !this.btnIsActive
-      console.log(123)
     }
   }
 }
